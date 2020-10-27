@@ -1,6 +1,6 @@
-# bmi_calculator
+# lbm_calculator
 
-A new Flutter project.
+A Lean Body Mass Calulator App with three different formula
 
 ## Getting Started
 
