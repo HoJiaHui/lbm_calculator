@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   AudioPlayer audioPlayer = new AudioPlayer();
   int gender = 0;
 
-  //declare int number for according gender
+  //declare int number  according gender
   void maleGender() {
     setState(() {
       gender = 0;
@@ -62,7 +62,6 @@ class _MyAppState extends State<MyApp> {
                       onPressed: maleGender,
                       child: new Text("Male"),
                     ),
-                    
                     new RaisedButton(
                       onPressed: femaleGender,
                       textColor: Colors.white,
@@ -72,6 +71,7 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ],
                 ),
+               //Padding for Height and Weight
                 Padding(
                   padding: EdgeInsets.fromLTRB(50, 10, 50, 10),
                   child: TextField(
@@ -116,6 +116,7 @@ class _MyAppState extends State<MyApp> {
                         fillColor: Colors.white70),
                   ),
                 ),
+               //Padding for calculation
                 Padding(
                   padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
                   child: new MaterialButton(
@@ -134,7 +135,7 @@ class _MyAppState extends State<MyApp> {
                 new Text(
                   "Boer Result:$lbm",
                   style: new TextStyle(
-                      fontSize: 36.0,
+                      fontSize: 20.0,
                       color: const Color(0xFF000000),
                       fontWeight: FontWeight.w200,
                       fontFamily: "Merriweather"),
@@ -142,7 +143,7 @@ class _MyAppState extends State<MyApp> {
                 new Text(
                   "Hume Result:$lbm2",
                   style: new TextStyle(
-                      fontSize: 36.0,
+                      fontSize: 20.0,
                       color: const Color(0xFF000000),
                       fontWeight: FontWeight.w200,
                       fontFamily: "Merriweather"),
@@ -150,7 +151,7 @@ class _MyAppState extends State<MyApp> {
                 new Text(
                   "James Result:$lbm3",
                   style: new TextStyle(
-                      fontSize: 36.0,
+                      fontSize: 20.0,
                       color: const Color(0xFF000000),
                       fontWeight: FontWeight.w200,
                       fontFamily: "Merriweather"),
@@ -164,13 +165,13 @@ class _MyAppState extends State<MyApp> {
   }
 
   
-
+// formula 
   void _bmiOperation() {
     setState(() {
       double h = double.parse(_heightctrl.text);
       double w = double.parse(_weightctrl.text);
 
-      if(gender == 0){
+      if(gender == 0){  //male
         double bresult = (0.407*w) + (0.267*h) - 19.2;
         double hresult = (0.32810*w) + (0.33929*h) - 29.5336;
         double jresult = (1.1*w) - (w/h * w/h *128);
@@ -181,7 +182,7 @@ class _MyAppState extends State<MyApp> {
         lbm2 = format(hresult);
         lbm3 = format(jresult);
 
-      } else if(gender == 1){
+      } else if(gender == 1){ //female
         double bresult = (0.252*w) + (0.473*h) - 48.3;
         double hresult = (0.29569*w) + (0.41813*h) - 43.2933;
         double jresult = (1.07*w) - (w/h * w/h *148);
@@ -191,22 +192,15 @@ class _MyAppState extends State<MyApp> {
         lbm2 = format(hresult);
         lbm3 = format(jresult);
       }
-
-
     });
   }
-
-
-  
 
   String format(double n) {
     return n.toStringAsFixed(n.truncateToDouble() == n ? 0 : 2);
   }
-
   Future loadOk() async {
     audioPlayer = await AudioCache().play("audio/ok.wav");
   }
-
   Future loadFail() async {
     audioPlayer = await AudioCache().play("audio/fail.wav");
   }
